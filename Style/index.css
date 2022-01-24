@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.nav-bar{
+    background-color: #eee;
+    overflow: hidden;
+    display: flex;
+    /* display: inline; */
+    justify-content: center;
+    font-size: medium;
+}
+
+
+
+.nav-bar a{
+    margin: 20px 50px;
+    text-decoration: none;
+    
+    
+}
+
+.navbar a{
+    text-decoration: none;
+}
+
+.content{
+    height: 450px;
+}
+
+
+
+footer{
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 80px;
+    
+}
+.social-bar a{
+    margin: 0 10px;
+    text-decoration: none;
+
+}
