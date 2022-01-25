@@ -5,6 +5,7 @@ function Employee(EmployeeID,FullName,Department,Level){
     this.FullName = FullName;
     this.Department = Department;
     this.Level = Level;
+    this.isSalary = 0
     this.img = "#";
     allEmployee.push(this);
 }
@@ -19,8 +20,8 @@ Employee.prototype.resultOfSalary = function(){
         salary = Math.random() * (1000 - 500) + 500
     }
         var taks = (salary*0.075)
-        var isSalary = salary-taks 
-    return isSalary
+        this.isSalary = salary-taks 
+    return this.isSalary
 
 }
 let employee1 = new Employee(1000 , "Ghazi Samer" , "Administration" , "Senior");
@@ -34,7 +35,7 @@ let employee7 = new Employee(1006 , "Hadi Ahmad" , "Finance" , "Mid-Senior");
 Employee.prototype.render = function(){
     let Salary = this.resultOfSalary();
     document.write(` <h1> ${this.FullName} </h1>`)
-    document.write(`  ${Salary}`)
+    document.write(`  ${this.isSalary}`)
 }
 
 
