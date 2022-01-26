@@ -31,9 +31,26 @@ body {
     /* background-color: #FBCAFF; */
     height: 1fr;
     /* width: 785px; */
+    overflow: hidden;
 }
 #from{
-    margin: 50px 40%;
+    margin: 40px 30%;
+
+}
+form label{
+    margin: 5px 10px;
+}
+.dept{
+    margin: 0 0 0 10px;
+}
+.lvl{
+    margin: 0 0 0 60px;
+}
+#image{
+    margin: 0 0 0 25px;
+}
+.sub{
+    margin: 20px 0 0 90px ;
 }
 /* #form input {
     margin: 20px;
