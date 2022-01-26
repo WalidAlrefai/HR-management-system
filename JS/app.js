@@ -3,7 +3,7 @@
 let allEmployee=[]
 let employeeDiv = document.getElementById("employee");
 let from = document.getElementById("from");
-// let element = document.getElementById("element").parentNode;
+
 
 function Employee(EmployeeID,FullName,Department,Level,img){
     this.EmployeeID = EmployeeID;
@@ -37,26 +37,7 @@ Employee.prototype.resultOfSalary = function(){
     return empid
 }
 
-// function saveToLocalStorage() {
-//     let stringifedData = JSON.stringify(allEmployee);
-//     localStorage.setItem("Employees", stringifedData);
-// }
 
-
-// function getData() {
-//     let data = localStorage.getItem("Employees");
-//     let parseData = JSON.parse(data);
-//     if (parseData != null) {
-//         allEmployee =[];
-//         console.log(parseData);
-        
-//         for (let i = 0; i < parseData.length; i++) {
-//             console.log(parseData[i]);
-//             new Employee(parseData[i].EmployeeID, parseData[i].FullName, parseData[i].Department, parseData[i].Level, parseData[i].img)
-//         }
-//     }
-//     renderAll();  
-// }
 
 
 let employee1 = new Employee(1000,"Ghazi Samer" , "Administration" , "Senior" , "assets/Ghazi.jpg");
@@ -90,49 +71,10 @@ Employee.prototype.render = function () {
     newDiv.appendChild(info);
     employeeDiv.appendChild(newDiv);
 
-    // let Name = document.createElement('h4');
-    // Name.textContent = this.FullName;
-    // newDiv.appendChild(Name);
-    // employeeDiv.appendChild(newDiv);
 
-    // let Empid = document.createElement('h5');
-    // Empid.textContent = this.EmployeeID;
-    // newDiv.appendChild(Empid);
-    // employeeDiv.appendChild(newDiv);
-
-    // let Depart = document.createElement('h5');
-    // Depart.textContent = this.Department;
-    // newDiv.appendChild(Depart);
-    // employeeDiv.appendChild(newDiv);
-
-    // let Salar = document.createElement('h5');
-    // Salar.textContent = this.resultOfSalary();
-    // newDiv.appendChild(Salar);
-    // employeeDiv.appendChild(newDiv);
 
     
   
-    // let image = document.createElement('img') ; 
-    // image.setAttribute("src", this.img);
-    // employeeDiv.appendChild(image).width ="100";
-
-    // let Name = document.createElement('h4');
-    // Name.textContent = this.FullName;
-    // employeeDiv.appendChild(Name);
-
-    // let Empid = document.createElement('h5');
-    // Empid.textContent = this.newId();
-    // employeeDiv.appendChild(Empid);
-
-    
-    // let Depart = document.createElement('h5');
-    // Depart.textContent = this.Department;
-    // employeeDiv.appendChild(Depart);
-
-    // let Salar = document.createElement('h5');
-    // Salar.textContent = this.resultOfSalary();
-    // employeeDiv.appendChild(Salar);
-
 console.log(this);
 
 }
@@ -167,7 +109,7 @@ function handleSubmit(event) {
     let newEmployee = new Employee(empid,fullName,Department,Level,Image ,);
    
     newEmployee.resultOfSalary()
-    saveToLocalStorage()
+   
     newEmployee.render()
 //     console.log(fullName) 
 //     console.log(Department) 
@@ -175,6 +117,5 @@ function handleSubmit(event) {
 //    console.log(Image)
    
 }
-// getData()
+
 renderAll()
-   
