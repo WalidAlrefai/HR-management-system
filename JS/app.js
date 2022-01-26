@@ -1,12 +1,13 @@
+   
 'use strict';
 
 let allEmployee=[]
 let employeeDiv = document.getElementById("employee");
 let from = document.getElementById("from");
-let element = document.getElementById("element").parentNode;
 
-function Employee(FullName,Department,Level,img){
-    this.EmployeeID = 0;
+
+function Employee(EmployeeID,FullName,Department,Level,img){
+    this.EmployeeID = EmployeeID;
     this.FullName = FullName;
     this.Department = Department;
     this.Level = Level;
@@ -29,21 +30,44 @@ Employee.prototype.resultOfSalary = function(){
     return this.isSalary
 
 }
- Employee.prototype.newId = function (){
+  function  newId(){
      var empid = 0 ;
     empid = Math.floor(1000 + Math.random() * 9000);
 
-    this.EmployeeID=empid 
-    return this.EmployeeID
+     
+    return empid
 }
 
-let employee1 = new Employee( "Ghazi Samer" , "Administration" , "Senior" , "assets/Ghazi.jpg");
-let employee2 = new Employee( "Lana Ali" , "Finance" , "Senior", "assets/Lana.jpg");
-let employee3 = new Employee( "Tamara Ayoub" , "Marketing" , "Senior", "assets/Tamara.jpg" );
-let employee4 = new Employee( "Safi Walid" , "Administration" , "Mid-Senior", "assets/Safi.jpg");
-let employee5 = new Employee( "Omar Zaid" ,    "Development" , "Senior" , "assets/Omar.jpg");
-let employee6 = new Employee( "Rana Saleh" , "Development" , "Junior", "assets/Rana.jpg");
-let employee7 = new Employee( "Hadi Ahmad" , "Finance" , "Mid-Senior","assets/Hadi.jpg");
+function saveToLocalStorage() {
+    let stringifedData = JSON.stringify(allEmployee);
+    localStorage.setItem("Employees", stringifedData);
+}
+
+
+function getData() {
+    let data = localStorage.getItem("Employees");
+    let parseData = JSON.parse(data);
+    if (parseData != null) {
+        allEmployee =[];
+        console.log(parseData);
+        
+        for (let i = 0; i < parseData.length; i++) {
+            console.log(parseData[i]);
+            new Employee(parseData[i].EmployeeID, parseData[i].FullName, parseData[i].Department, parseData[i].Level, parseData[i].img)
+        }
+    }
+    renderAll();  
+}
+
+
+
+let employee1 = new Employee(1000,"Ghazi Samer" , "Administration" , "Senior" , "assets/Ghazi.jpg");
+let employee2 = new Employee( 1001,"Lana Ali" , "Finance" , "Senior", "assets/Lana.jpg");
+let employee3 = new Employee( 1003,"Tamara Ayoub" , "Marketing" , "Senior", "assets/Tamara.jpg" );
+let employee4 = new Employee( 1004,"Safi Walid" , "Administration" , "Mid-Senior", "assets/Safi.jpg");
+let employee5 = new Employee( 1005,"Omar Zaid" ,    "Development" , "Senior" , "assets/Omar.jpg");
+let employee6 = new Employee( 1006,"Rana Saleh" , "Development" , "Junior", "assets/Rana.jpg");
+let employee7 = new Employee( 1007,"Hadi Ahmad" , "Finance" , "Mid-Senior","assets/Hadi.jpg");
 
 
 Employee.prototype.render = function () {
@@ -53,6 +77,7 @@ Employee.prototype.render = function () {
     newDiv.style.width = "250px";
     newDiv.style.padding = "20px";
     newDiv.style.margin = "20px";
+    newDiv.style.borderRadius = "10%";
   
 
      let image = document.createElement('img') ; 
@@ -60,52 +85,17 @@ Employee.prototype.render = function () {
     newDiv.appendChild(image).width ="200";
     employeeDiv.appendChild(newDiv);
 
-    let Name = document.createElement('h4');
-    Name.textContent = this.FullName;
-    newDiv.appendChild(Name);
+    let info = document.createElement('p')
+    info.textContent = "name : " +this.FullName + "  -  " + "ID: " + this.EmployeeID + " " +  "Department : " 
+    + this.Department + " - " + "level : " + this.Level  + " - " + "salary : " +  this.resultOfSalary();
+
+    newDiv.appendChild(info);
     employeeDiv.appendChild(newDiv);
 
-    // element.insertBefore(newDiv, image);
 
-    let Empid = document.createElement('h5');
-    Empid.textContent = this.newId();
-    newDiv.appendChild(Empid);
-    employeeDiv.appendChild(newDiv);
-
-    
-    let Depart = document.createElement('h5');
-    Depart.textContent = this.Department;
-    newDiv.appendChild(Depart);
-    employeeDiv.appendChild(newDiv);
-
-    let Salar = document.createElement('h5');
-    Salar.textContent = this.resultOfSalary();
-    newDiv.appendChild(Salar);
-    employeeDiv.appendChild(newDiv);
 
     
   
-    // let image = document.createElement('img') ; 
-    // image.setAttribute("src", this.img);
-    // employeeDiv.appendChild(image).width ="100";
-
-    // let Name = document.createElement('h4');
-    // Name.textContent = this.FullName;
-    // employeeDiv.appendChild(Name);
-
-    // let Empid = document.createElement('h5');
-    // Empid.textContent = this.newId();
-    // employeeDiv.appendChild(Empid);
-
-    
-    // let Depart = document.createElement('h5');
-    // Depart.textContent = this.Department;
-    // employeeDiv.appendChild(Depart);
-
-    // let Salar = document.createElement('h5');
-    // Salar.textContent = this.resultOfSalary();
-    // employeeDiv.appendChild(Salar);
-
 console.log(this);
 
 }
@@ -120,12 +110,12 @@ console.log(this);
 // }
 
 
-
+function renderAll(){
 
 for(let i = 0 ; i < allEmployee.length ; i++){
     allEmployee[i].render();
 }
-
+}
 
 from.addEventListener("submit", handleSubmit);
 
@@ -136,10 +126,12 @@ function handleSubmit(event) {
     let Department = event.target.Department.value;
     let Level = event.target.Level.value;
     let Image = event.target.image.value;
-
-    let newEmployee = new Employee(fullName,Department,Level,Image);
+    let empid = newId();
+    let newEmployee = new Employee(empid,fullName,Department,Level,Image ,);
    
     newEmployee.resultOfSalary()
+    saveToLocalStorage()
+
     newEmployee.render()
 //     console.log(fullName) 
 //     console.log(Department) 
@@ -147,4 +139,7 @@ function handleSubmit(event) {
 //    console.log(Image)
    
 }
-   
+getData()
+// renderAll()
+
+
