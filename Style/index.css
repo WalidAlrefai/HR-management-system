@@ -2,8 +2,11 @@
     margin: 0;
     padding: 0;
 }
+body {
+    background-color: #FBCAFF;
+}
 .nav-bar{
-    background-color: #eee;
+    background-color: #FDEBF7;
     overflow: hidden;
     display: flex;
     /* display: inline; */
@@ -25,13 +28,32 @@
 }
 
 .content{
-    height: 450px;
+    /* background-color: #FBCAFF; */
+    height: 1fr;
+    /* width: 785px; */
 }
+#from{
+    margin: 50px 40%;
+}
+/* #form input {
+    margin: 20px;
+} */
+#employee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    
+}
+/* #employee div{
+    margin: 20px 40px;
+} */
 
 
 
 footer{
-    background-color: #eee;
+    background-color: #FC28FB;
     display: flex;
     align-items: center;
     justify-content: space-around;

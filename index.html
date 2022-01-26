@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./Style/index.css">
 </head>
+
 <body>
     <header class="head">
         <nav class="nav-bar">
@@ -15,8 +17,36 @@
         </nav>
     </header>
     <main class="content">
+        <div id="element">
+            <form id="from">
+                <label for="fullName">Full Name</label>
+                <input id="fullName" type="text" name="fullName" >
+                <br>
+                <label for="Department">Department:</label>
+                <select id="Department" name="Department" >
+                    <option value="Administration">Administration</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Development">Development</option>
+                    <option value="Finance">Finance</option>
+                </select>
+                <br>
+                <label for="Level">Level:</label>
+                <select id="Level" name="Level" >
+                    <option value="Junior">Junior</option>
+                    <option value="Mid-Senior">Mid-Senior</option>
+                    <option value="Senior">Senior</option>
+                </select>
+                <br>
+                <label for="Image">Image</label>
+                <input id="image" type="text"  name="Image">
+                <br>
+                <input type="submit" value="Submit">
+              
+            </form>
+            <div id="employee"></div>
+        </div>
        
-        <script src="./JS/app.js"></script>
+            
     </main>
     <footer>
         <p class="Copy"> Copy Right &copy;</p>
@@ -27,7 +57,7 @@
             <a href="http://">E-mail</a>
         </nav>
     </footer>
-    
-    
+    <script src="./JS/app.js"></script>
 </body>
+
 </html>
