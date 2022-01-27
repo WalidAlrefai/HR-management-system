@@ -36,6 +36,7 @@ Employee.prototype.resultOfSalary = function(){
 
      
     return empid
+
 }
 
 function saveToLocalStorage() {
@@ -57,7 +58,12 @@ function getData() {
         }
     }
     renderAll();  
+
+
 }
+
+
+
 
 
 
@@ -130,7 +136,10 @@ function handleSubmit(event) {
     let newEmployee = new Employee(empid,fullName,Department,Level,Image ,);
    
     newEmployee.resultOfSalary()
+
     saveToLocalStorage()
+
+
 
     newEmployee.render()
 //     console.log(fullName) 
@@ -139,7 +148,11 @@ function handleSubmit(event) {
 //    console.log(Image)
    
 }
+
 getData()
 // renderAll()
+
+
+
 
 

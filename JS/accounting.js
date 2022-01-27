@@ -1,3 +1,4 @@
+
 'use strict';
 let depTable =document.getElementById("depTable");
 // let table =document.getElementById("table");
@@ -300,6 +301,10 @@ let theMainDiv=document.getElementById("main");
         x = x  / totalOfEmployees()
         return x
     }
+
+
+
+
 
 
 
