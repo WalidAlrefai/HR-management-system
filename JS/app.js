@@ -1,3 +1,4 @@
+   
 'use strict';
 
 let allEmployee=[]
@@ -35,7 +36,33 @@ Employee.prototype.resultOfSalary = function(){
 
      
     return empid
+
 }
+
+function saveToLocalStorage() {
+    let stringifedData = JSON.stringify(allEmployee);
+    localStorage.setItem("Employees", stringifedData);
+}
+
+
+function getData() {
+    let data = localStorage.getItem("Employees");
+    let parseData = JSON.parse(data);
+    if (parseData != null) {
+        allEmployee =[];
+        console.log(parseData);
+        
+        for (let i = 0; i < parseData.length; i++) {
+            console.log(parseData[i]);
+            new Employee(parseData[i].EmployeeID, parseData[i].FullName, parseData[i].Department, parseData[i].Level, parseData[i].img)
+        }
+    }
+    renderAll();  
+
+
+}
+
+
 
 
 
@@ -109,7 +136,11 @@ function handleSubmit(event) {
     let newEmployee = new Employee(empid,fullName,Department,Level,Image ,);
    
     newEmployee.resultOfSalary()
-   
+
+    saveToLocalStorage()
+
+
+
     newEmployee.render()
 //     console.log(fullName) 
 //     console.log(Department) 
@@ -118,4 +149,10 @@ function handleSubmit(event) {
    
 }
 
-renderAll()
+getData()
+// renderAll()
+
+
+
+
+
