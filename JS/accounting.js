@@ -1,10 +1,13 @@
 
 'use strict';
+console.log('helooooo');
 let depTable =document.getElementById("depTable");
 // let table =document.getElementById("table");
 
 let data =localStorage.getItem("Employees");
-    let parseData =JSON.parse(data);
+let parseData =JSON.parse(data);
+
+console.log(parseData);
 
 
 //     console.log(parseDataa[0].Department);
@@ -156,20 +159,11 @@ let theMainDiv=document.getElementById("main");
             }
             
         });
+        
         return x;
     }
     function aveOfSalaryOfAdminsitration(){
-        let x = 0;
-        parseData.forEach(element => {
-            
-            if(element.Department == "Administration"){
-                x += element.isSalary ;
-            }
-            let num = employeesOfAdministration()
-            x = (x / num) ;
-            
-        }); 
-        return x 
+        return salaryOfAdministration()/employeesOfAdministration()
     }
     
     function employeesOfMarketing(){
@@ -193,17 +187,7 @@ let theMainDiv=document.getElementById("main");
         return x;
     }
     function aveOfSalaryOfMarketing(){
-        let x = 0 ;
-        parseData.forEach(element => {
-            
-            if(element.Department == "Marketing"){
-                x +=element.isSalary ;
-            }
-            let num = employeesOfMarketing()
-            x= x / num ;
-            
-        }); 
-        return x 
+        return salaryOfMarketing()/employeesOfMarketing()
     }
 
     
@@ -229,17 +213,7 @@ let theMainDiv=document.getElementById("main");
         return x;
     }
     function aveOfSalaryOfDevelopment(){
-        let x = 0 ;
-        parseData.forEach(element => {
-            
-            if(element.Department == "Development"){
-                x +=element.isSalary ;
-            }
-            let num = employeesOfDevelopment()
-            x= x / num ;
-            
-        }); 
-        return x 
+        return  salaryOfDevelopment()/ employeesOfDevelopment()
     }
     function employeesOfFinance(){
         let x = 0 ;
@@ -262,17 +236,8 @@ let theMainDiv=document.getElementById("main");
         return x;
     }
     function aveOfSalaryOfFinance(){
-        let x = 0 ;
-        parseData.forEach(element => {
-            
-            if(element.Department == "Finance"){
-                x +=element.isSalary ;
-            }
-            
-            x = x / employeesOfFinance();
-            
-        }); 
-        return x 
+        
+        return salaryOfFinance()/employeesOfFinance();
     }
 
     function totalOfEmployees(){
